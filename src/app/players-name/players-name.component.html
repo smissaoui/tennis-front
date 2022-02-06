@@ -1,0 +1,20 @@
+<div *ngIf="!isMatchStarted">
+    <div class="container">   
+            
+            <div class="form-group">
+                <label for="player-one-name">Player1 name: </label>
+                <input id="player-one-name"  [(ngModel)]="players.playerOneName">
+            </div>
+
+            <div>
+                <label for="player-two-name">Player2 name: </label>
+                <input id="player-two-name" [(ngModel)]="players.playerTwoName">
+            </div>
+
+            <button (click)="startMatchEvent()" class="btn btn-default">Start match</button>
+    </div>
+</div>
+
+<div *ngIf="isMatchStarted">
+	<app-match-score [idMatch]="idMatch"></app-match-score>
+</div>

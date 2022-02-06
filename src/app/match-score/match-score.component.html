@@ -1,0 +1,28 @@
+
+<div class="container" *ngIf="scoreBoard">
+<table class="table ">
+    <tr>
+      <th *ngFor="let header of scoreBoard.headerScoreBoard">{{header}}</th>
+    </tr>
+    <tr>
+      <td>{{scoreBoard.playerName1}}</td>
+      <td>{{scoreBoard.actualScorePlayer1}}</td>
+      <td *ngFor="let gamesWon of scoreBoard.gamesWonByPlayer1">{{gamesWon}}</td>
+    </tr>
+    <tr>
+        <td> {{scoreBoard.playerName2}} </td>
+        <td>{{scoreBoard.actualScorePlayer2}}</td>
+        <td *ngFor="let gamesWon of scoreBoard.gamesWonByPlayer2">{{gamesWon}}</td>
+      </tr>
+  </table>
+</div>
+
+<div class="container" *ngIf="!isMatchFinished()">
+  <button (click)="playOneBallEvent()" class="btn btn-default" >{{libelleButtonOneBall()}}</button>
+  </div>
+
+<div class="container" *ngIf="isMatchFinished()">
+  <h3>Match result</h3>
+    {{winningMessage()}} <br/>
+    <button type ="button" class="btn btn-default" routerLink="/players-name">Play new match</button>
+</div>
